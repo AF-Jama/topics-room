@@ -1,0 +1,32 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.bar{
+    height: 5px;
+    width: 35px;
+    background-color: #fff;
+    margin: 6px 2px 6px 0;
+}
+
+.change>div{
+    transition: 0.4s;
+}
+
+.change>div:first-child{
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change>div:nth-child(2){
+    opacity: 0;
+}
+
+.change>div:nth-child(3) {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.container>div{
+    transition: 0.4s;   
+}

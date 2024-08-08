@@ -1,0 +1,8 @@
+.card{
+    background: linear-gradient(71deg, #080509, #1a171c, #080509);
+    transition-duration: 0.4s;
+}
+
+.card:hover{
+    background: linear-gradient(81deg, #19131b, #87738f, #44264d);
+}
