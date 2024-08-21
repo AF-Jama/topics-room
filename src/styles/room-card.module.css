@@ -1,5 +1,6 @@
 .card{
-    background: linear-gradient(71deg, #080509, #1a171c, #080509);
+    /* background: linear-gradient(71deg, #080509, #1a171c, #080509); */
+    background-color: #B1DDF1;
     transition-duration: 0.4s;
 }
 

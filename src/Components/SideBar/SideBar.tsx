@@ -4,6 +4,12 @@ import React,{useState,useEffect, useContext} from "react";
 import roomContext from "@/Contexts/RoomContext/RoomContext";
 import { Roboto } from "next/font/google";
 import style from '../../styles/sidebar.module.css';
+import { Category } from "@/types/types";
+
+
+interface Props{
+    categories:Category[] | null
+}
 
 const roboto = Roboto({
     weight:"400",
@@ -12,14 +18,14 @@ const roboto = Roboto({
 })
 
 
-const SideBar:React.FC = ()=>{
-    const [visibility,setVisibility] = useState(true);
-    const { category, setCategoryState } = useContext(roomContext);
+const SideBar:React.FC<Props> = ({ categories })=>{
+    const [visibility,setVisibility] = useState(false); // set visibility state
+    const { categoryValue, setCategoryState } = useContext(roomContext);
 
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-    },[]);
+    // },[]);
 
 
 
@@ -33,9 +39,12 @@ const SideBar:React.FC = ()=>{
                         <div id="div3" className={`h-[3px] w-[35px] my-[6px] mr-[2px] ml-[0px] ${visibility? "bg-white":"bg-black"}`}></div>
                     </div>
                     <ul className="p-5">
-                        <li value="News" className={`${roboto.className} text-lg font-extrabold`}>News</li>
+                        {/* <li value="News" className={`${roboto.className} text-lg font-extrabold`}>News</li>
                         <li value="Technology" className={`${roboto.className} text-lg font-extrabold`}>Technology</li>
-                        <li value="Finance" className={`${roboto.className} text-lg font-extrabold`}>Finance</li>
+                        <li value="Finance" className={`${roboto.className} text-lg font-extrabold`}>Finance</li> */}
+                        {(categories==null)?<p>Could not fetch categories</p>:categories.map(category=>(
+                            <li value={category._id.toString()} onClick={()=>setCategoryState(category._id)} key={category._id.toString()} className={`${roboto.className} text-lg font-extrabold`}>{category.category}</li>
+                        ))}
                     </ul>
         </div>
     )

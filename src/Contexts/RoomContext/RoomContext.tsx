@@ -1,15 +1,16 @@
 "use client"
 
+import { ObjectId } from "mongodb";
 import React, {createContext} from "react"; 
 
 interface Props{
-    category:string;
-    setCategoryState:React.Dispatch<React.SetStateAction<string>>
+    categoryValue:ObjectId | null; // category selected is null or category string
+    setCategoryState:React.Dispatch<React.SetStateAction<ObjectId|null>>,
 }
 
 
 const roomContext = createContext<Props>({
-    category:"News",
+    categoryValue:null,
     setCategoryState:()=>{}
 });
 

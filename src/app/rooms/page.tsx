@@ -6,8 +6,8 @@ import SideBar from "@/Components/SideBar/SideBar";
 import RoomContainer from "@/Components/RoomContainer/RoomContainer";
 import RoomCard from "@/Components/RoomCard/RoomCard";
 import news from '../../assets/images/news-icon.svg';
-import Posts from "@/types/types";
-import { getData, getdbs } from "@/utils/utils";
+import Posts, { Category } from "@/types/types";
+import { getData, getdbs, getTopicCategories } from "@/utils/utils";
 
 
 const Page:React.FC = async  ()=>{
@@ -27,7 +27,7 @@ const Page:React.FC = async  ()=>{
     //     </a>
     // ));
 
-    let coll = await getdbs();
+    let categories = await getTopicCategories() as Category[];
 
     return (
         <main className="flex-1">   
@@ -41,7 +41,8 @@ const Page:React.FC = async  ()=>{
                         <li className="text-lg font-extrabold">Other</li>
                     </ul>
                 </div> */}
-                <SideBar/>
+                <SideBar categories={categories}/>
+
 
                 <RoomContainer/>
 

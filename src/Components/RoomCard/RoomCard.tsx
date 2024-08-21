@@ -2,12 +2,13 @@
 
 import React, {useState, useEffect, useReducer} from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Roboto } from "next/font/google";
+import { Room } from "@/types/types";
 import style from '../../styles/room-card.module.css';
 
 interface Props{
-    title:string;
-    url:string;
+    room:Room
 }
 
 const roboto = Roboto({
@@ -18,21 +19,24 @@ const roboto = Roboto({
 
 
 
-const RoomCard:React.FC<Props> = ({ title, url })=>{
+const RoomCard:React.FC<Props> = ({ room })=>{
 
 
 
 
     return (
-        <div id="room-card" className={`p-3 flex items-center gap-x-5 ${style.card} rounded-md`}>
-            <div id="img-container" className="h-16 w-16">
-                <Image src={url} className="h-full w-full dark:invert" alt=""/>
-            </div>
+        <Link href={`/chat/room/${room._id.toString()}`}>
+            <div id="room-card" className={`p-3 flex justify-center items-center gap-x-5 ${style.card} rounded-md bg-[#B1DDF1] h-28`} key={room._id.toString()}>
+                {/* <div id="img-container" className="h-16 w-16">
+                    <Image src={url} className="h-full w-full dark:invert" alt=""/>
+                </div> */}
 
-            <div className="">
-                <h1 className={`text-lg text-white ${roboto.className}`}>{title}</h1>
+                <div className="">
+                    <h1 className={`text-lg text-black ${roboto.className}`}>{room.room_name}</h1>
+                </div>
             </div>
-        </div>
+        
+        </Link>
     )
 }
 

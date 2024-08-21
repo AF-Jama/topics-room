@@ -28,7 +28,7 @@ const Page:React.FC = ()=>{
             <h1 className={`${inter.className}text-slate-900 font-extrabold text-4xl text-center sm:text-5xl lg:text-5xl dark:text-white`}>Talk to anyone about the topics you want, anytime</h1>
           </div>
           <div id="sub-text">
-            <p className={`${inter.className} text-center mt-6 text-slate-600 max-w-xl mx-auto text-lg`}>This is your go-to space for engaging conversations about current events and trending topics. Stay updated, share your insights, and join a community of people passionate about what's happening in the world right now</p>
+            <p className={`${inter.className} text-center mt-6 text-slate-600 max-w-xl mx-auto text-lg`}>This is your go-to space for engaging conversations about current events and trending topics. Stay updated, share your insights, and join a community of people passionate about whats happening in the world right now</p>
           </div>
           <div id="get-started-btn" className="flex justify-center mt-6">
             <Link href="/rooms">
@@ -37,7 +37,7 @@ const Page:React.FC = ()=>{
           </div>
         </div>
 
-        <div id="categories-container" className="grid grid-cols-2 md:grid-cols-3 mt-6 p-2">
+        <div id="categories-container" className="grid grid-cols-2 md:grid-cols-3 mt-6 p-2 gap-y-4">
           <CategoriesCard category="News" url={NewsCard}/>
           <CategoriesCard category="Technology" url={NewsCard}/>
           <CategoriesCard category="Sports" url={NewsCard}/>

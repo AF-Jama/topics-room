@@ -2,10 +2,16 @@
 
 import React, { useState, useEffect} from "react";
 import roomContext from "./RoomContext";
+import { ObjectId } from "mongodb";
 
 
 const RoomContextProvider = ({ children }:{ children: React.ReactNode })=>{
-    const [roomValue,setRoomValue] = useState("News");
+    const [categoryValue,setCategoryValue] = useState<ObjectId|null>(null);
+
+
+    // useEffect(()=>{
+    //     console.log(`Clicked is ${categoryValue?.toString()||null}`)
+    // },[categoryValue])
 
 
 
@@ -15,8 +21,8 @@ const RoomContextProvider = ({ children }:{ children: React.ReactNode })=>{
 
     return (
         <roomContext.Provider value={{
-            category:roomValue, 
-            setCategoryState:setRoomValue,
+            categoryValue:categoryValue, 
+            setCategoryState:setCategoryValue,
         }}>
             {children}
         </roomContext.Provider>
