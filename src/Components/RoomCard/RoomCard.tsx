@@ -26,7 +26,7 @@ const RoomCard:React.FC<Props> = ({ room })=>{
 
     return (
         <Link href={`/chat/room/${room._id.toString()}`}>
-            <div id="room-card" className={`p-3 flex justify-center items-center gap-x-5 ${style.card} rounded-md bg-[#B1DDF1] h-28`} key={room._id.toString()}>
+            <div id="room-card" className={`p-3 flex justify-center items-center gap-x-5 rounded-md bg-white h-28 shadow-md`} key={room._id.toString()}>
                 {/* <div id="img-container" className="h-16 w-16">
                     <Image src={url} className="h-full w-full dark:invert" alt=""/>
                 </div> */}

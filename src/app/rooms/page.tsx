@@ -30,10 +30,10 @@ const Page:React.FC = async  ()=>{
     let categories = await getTopicCategories() as Category[];
 
     return (
-        <main className="flex-1">   
+        <main className="flex-1 bg-[#1C4E80]">   
             <Header/>
 
-            <div className="w-full mx-auto p-3 border border-black md:flex md:min-h-[calc(-65px+100vh)] md:p-0">
+            <div className="w-full mx-auto p-3 md:flex md:min-h-[calc(-65px+100vh)] md:p-0">
                 {/* <div id="room-list-container" className="fixed top-0 bottom-0 left-0 w-48 overflow-hidden z-10 bg-black text-white border border-blue-400 md:static md:w-auto md:basis-72 md:grow-0 md:shrink-0">
                     <ul className="p-5">
                         <li className="text-lg font-extrabold">News</li>

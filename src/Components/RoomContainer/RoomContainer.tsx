@@ -24,7 +24,7 @@ const RoomContainer = ()=>{
         
         <div id="room-card-container" className="flex-1 flex flex-col gap-y-2 lg:grid lg:grid-cols-2 lg:gap-2 md:relative p-2">
             {categoryValue==null && <p className="fixed top-[50%] left-[50%] h-[100px] w-[150px] ml-[-75px] mt-[-50px] md:absolute">Select a category</p>}
-            {loading && (
+            {categoryValue!=null && loading && (
                 <div className="fixed top-[50%] left-[50%] h-[100px] w-[150px] ml-[-75px] mt-[-50px] md:absolute">
                     <Spinner/>
                 </div>

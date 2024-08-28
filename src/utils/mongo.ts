@@ -30,4 +30,27 @@ clientPromise = client.connect()
 
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
+
+const connectDB = async ():Promise<MongoClient>=>{
+  try{
+
+    if (!process.env.MONGODB_URI) {
+      throw new Error('Please add your Mongo URI to .env.local')
+    }
+
+    let client = new MongoClient(uri, options)
+    client = await client.connect()
+
+    return client;
+
+
+  }catch(error){
+    console.log("Could not connect to db");
+    throw Error("Could not connect to db");
+  }
+}
+
 export default clientPromise;
+export {
+  connectDB
+}

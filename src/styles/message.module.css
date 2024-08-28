@@ -1,0 +1,7 @@
+.test button{
+    display: none;
+}
+
+.test:hover button{
+    display: block;
+}

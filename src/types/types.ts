@@ -41,6 +41,17 @@ interface IPDATA{
     countryCode:string,
 }
 
+interface ChatMessage{
+    _id: ObjectId,
+    message: string,
+    room_id: ObjectId,
+    created_at: number,
+    country_code: string,
+    city_name: string,
+    country_name: string,
+    ip_address: string
+}
+
 
 
 export default Posts;
@@ -49,4 +60,5 @@ export type{
     Room,
     Rooms,
     IPDATA,
+    ChatMessage
 }

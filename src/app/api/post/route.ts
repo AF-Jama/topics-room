@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/utils/mongo";
+import clientPromise, { connectDB } from "@/utils/mongo";
 import { postSchema, getLocationData, paginationSchema } from "@/utils/utils";
 import { IPDATA } from "@/types/types";
 import { time } from "console";
@@ -64,19 +64,15 @@ export async function POST(req:NextRequest){
 export async function GET(req:NextRequest){
     try{
         // page limit
-        const LIMIT=2; // message per limit
+        const LIMIT=10; // message per limit
 
         // query param must use room_id and page number
-        const room_id = req.nextUrl.searchParams.get("room_id");
-        const page = req.nextUrl.searchParams.get("page");
+        const room_id = req.nextUrl.searchParams.get("room_id"); // room id query param
+        const last_id = req.nextUrl.searchParams.get("last_id"); // last id query param
 
-        if(room_id==null || page==null) throw new Error("room id and page number must both be set");
+        if(room_id==null) throw new Error("room id  must be specified");
 
-        const page_number = parseInt(page,10);
-
-        if(isNaN(page_number)||page_number<1) throw new Error("Invalid page number");
-
-        let client = await clientPromise;
+        let client = await connectDB();
 
         const db = client.db("topicsdb");
 
@@ -84,24 +80,36 @@ export async function GET(req:NextRequest){
 
         // pagination ends once last page returns with less results than LIMIT
 
-        const messageDocuments =  messagesCollection.find({
-            "room_id":new ObjectId(`${room_id}`)
-        }).limit(LIMIT).skip((page_number-1)*LIMIT);
+        let messageDocuments;
+
+        if(last_id==null){
+            // triggered when querying newest batch of documents
+            messageDocuments = messagesCollection.find({
+                "room_id":new ObjectId(`${room_id}`)
+            }).limit(LIMIT).sort({"_id":-1});
+        }else{
+            messageDocuments = messagesCollection.find({
+                _id:{$lt:new ObjectId(last_id)}, // querying for documents with id less than the oldest of the previous query
+                "room_id":new ObjectId(`${room_id}`)
+            }).limit(LIMIT).sort({"_id":-1});
+        }
+
+        let data = await messageDocuments.toArray();
+
 
 
 
         return NextResponse.json({
-            "message":"SUCCESFULL",
-            "prev":"",
-            "next":"",
-            data: await messageDocuments.toArray()
+            "message":`Succesfully fetched message data in room ${room_id}`,
+            data:data,
+            limit:LIMIT,
         },{status:200});
 
 
 
     }catch(error:any){
         return NextResponse.json({
-            "message":"Could not get fetch data",
+            "message":`Could not get fetch data ${error.message}`,
             data:[]
         },{status:401})
 

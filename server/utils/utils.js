@@ -1,22 +1,25 @@
-import mongoose from 'mongoose';
-import 'dotenv/config';
+import { MongoClient } from "mongodb";
+import dotenv from 'dotenv';
+
+dotenv.config({path:'../.env'});
+
+
+const uri = process.env.MONGODB_URI; // mongodb URI
+
+const client = new MongoClient(uri);
+
+
+const db = client.db("topicsdb");
+
+
+const categories = db.collection("categories");
+const messages = db.collection("messages");
+const room = db.collection("rooms");
 
 
 
-const DBNAME = {
-    'dbName':'chatdb'
-};
-
-
-const connectdb = async ()=>{
-    try{
-        await mongoose.connect(process.env.MONGO_URL,DBNAME);
-        console.log("Succesfull connected to mongo server");
-    }catch(error){
-        console.log("Unable to connect to mongo server")
-    }
+export {
+    categories,
+    room,
+    messages
 }
-
-
-
-export default connectdb;

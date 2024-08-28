@@ -7,7 +7,7 @@ export async function GET(req:Request){
 
 
     return NextResponse.json({
-        x:"SUCCESFULL"
+        x:`SUCCESFULL ${process.env.GEO_APII}`
     })
 }
 
