@@ -23,7 +23,7 @@ const EVENTS = {
     DELETE:'delete'
 }
 
-io.on("connection", (socket) => {
+io.on("connection", (socket) => { // callback with socket arg that defines unique connection between the client and server
     console.log(`Connected ${socket.id}`);
 
     console.log("CONNECTED");
@@ -34,15 +34,20 @@ io.on("connection", (socket) => {
 
     socket.on("typing",(data)=>{
         console.log("TYPING");
-        io.emit("display",data);
+        io.except(socket.id).emit("display",data); // emit data to all connected client sockets except for source client
     }) // emits data when typing event occurs
+
+    socket.on("doneTyping",(data)=>{
+        io.except(socket.id).emit("done",data);
+    })
 
     messageChangeStream.on("change", next => { // triggered on message collection change ie: INSERT
         // Print any change event
         switch (next.operationType) {
             case "insert":
                 console.log(`INSERT ${socket.id}`);
-                io.to(socket.id).emit("change",next.fullDocument);
+                // io.to(socket.id).emit("change",next.fullDocument);
+                socket.emit("change",next.fullDocument);
                 break;
 
             case 'delete':

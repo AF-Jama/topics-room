@@ -81,9 +81,9 @@ const ChatContainer:React.FC<Props> = ({ messageData, roomData })=>{
         //     console.log(message);
         // })
 
-        // socket.on('typing',(message)=>{
-            
-        // })
+        socket.on('display',(message)=>{
+            console.log("Typing....");
+        })
 
         socket.on("hello",(data)=>console.log(data))
 

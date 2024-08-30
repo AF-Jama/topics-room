@@ -28,7 +28,7 @@ const Message:React.FC<ChatMessage> = ({ _id, city_name, country_code, country_n
                     {message}
                 </div>
 
-                <button className="z-10 bg-blue-500 rounded-md px-4 py-2 absolute bottom-[1px] right-0">Delete</button>
+                {/* <button className="z-10 bg-blue-500 rounded-md px-4 py-2 absolute bottom-[1px] right-0">Delete</button> */}
             </div>
         </div>
     )
