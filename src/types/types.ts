@@ -10,7 +10,8 @@ interface Posts{
 interface Category{
     category:string,
     _id:ObjectId,
-    created_at:Timestamp
+    created_at:Timestamp,
+    image:string
 }
 
 interface Room{

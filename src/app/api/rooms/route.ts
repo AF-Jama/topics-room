@@ -1,4 +1,5 @@
 import { NextRequest,NextResponse } from "next/server";
+import { connectDB } from "@/utils/mongo";
 import clientPromise from "@/utils/mongo";
 import { ObjectId } from "mongodb";
 
@@ -11,7 +12,7 @@ export async function GET(req:NextRequest){
 
         if(objectId==null) throw new Error("Unknown object id");
 
-        let client = await clientPromise;
+        let client = await connectDB();
 
         const db = client.db("topicsdb");
 

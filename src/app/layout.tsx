@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen antialiased bg-white flex flex-col`}>
+      <body className={`${inter.className} min-h-screen antialiased bg-[#1d1b1b] flex flex-col`}>
         <ChakraProvider>
           <RoomContextProvider>
             {children}
