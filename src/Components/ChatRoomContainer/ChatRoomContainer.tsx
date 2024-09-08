@@ -124,7 +124,7 @@ const ChatRoomContainer:React.FC<Props> = ({ roomData, messageData })=>{
     useEffect(()=>{
         
         // const socket = io('http://localhost:5000');
-        const socket = io("http://localhost:5000");
+        const socket = io(process.env.NEXT_PUBLIC_WS_HOST as string);
 
         setSocket(socket); // once socket establishes connection on client it state is set
         
