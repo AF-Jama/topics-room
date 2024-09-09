@@ -14,7 +14,7 @@ const messageChangeStream = messages.watch(pipeline,options);
 
 const httpServer = createServer();
 const io = new Server(httpServer, { cors: {
-    origin: "*",
+    origin: process.env.HOST||"*",
     methods: ["GET", "POST"]
   }});
 

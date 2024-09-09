@@ -38,11 +38,40 @@ const Page:React.FC = ()=>{
         </div>
 
         <div id="categories-container" className="grid grid-cols-2 md:grid-cols-3 mt-6 p-2 gap-y-4">
-          <CategoriesCard category="News" url={NewsCard}/>
-          <CategoriesCard category="Technology" url={NewsCard}/>
-          <CategoriesCard category="Sports" url={NewsCard}/>
-          <CategoriesCard category="Finance" url={NewsCard}/>
-          <CategoriesCard category="Politics" url={NewsCard}/>
+          <div id="categories-card" className="flex gap-x-2 items-center">
+              <div className="h-10 w-10 md:h-12 md:w-12">
+                  <Image src={NewsCard} className="w-full h-full" alt=""/>
+              </div>
+              <p className={`${inter.className} text-white md:text-lg`}>News</p>   
+          </div>
+
+          <div id="categories-card" className="flex gap-x-2 items-center">
+              <div className="h-10 w-10 md:h-12 md:w-12">
+                  <Image src={NewsCard} className="w-full h-full" alt=""/>
+              </div>
+              <p className={`${inter.className} text-white md:text-lg`}>Technology</p>   
+          </div>
+
+          <div id="categories-card" className="flex gap-x-2 items-center">
+              <div className="h-10 w-10 md:h-12 md:w-12">
+                  <Image src={NewsCard} className="w-full h-full" alt=""/>
+              </div>
+              <p className={`${inter.className} text-white md:text-lg`}>Sports</p>   
+          </div>
+
+          <div id="categories-card" className="flex gap-x-2 items-center">
+              <div className="h-10 w-10 md:h-12 md:w-12">
+                  <Image src={NewsCard} className="w-full h-full" alt=""/>
+              </div>
+              <p className={`${inter.className} text-white md:text-lg`}>Finance</p>   
+          </div>
+
+          <div id="categories-card" className="flex gap-x-2 items-center">
+              <div className="h-10 w-10 md:h-12 md:w-12">
+                  <Image src={NewsCard} className="w-full h-full" alt=""/>
+              </div>
+              <p className={`${inter.className} text-white md:text-lg`}>Random</p>   
+          </div>
         </div>
       </div>
     </main>

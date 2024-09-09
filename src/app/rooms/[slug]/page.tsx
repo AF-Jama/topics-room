@@ -59,7 +59,7 @@ const Page:React.FC<Props> = async ({ params })=>{
                     <div className="flex flex-wrap gap-3 justify-center">
                         {
                             rooms.rooms.map(room=>(
-                                <RoomCard room={room}/>
+                                <RoomCard room={room} key={room._id.toString()}/>
                             ))
                         }
                     </div>

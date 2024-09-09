@@ -73,20 +73,21 @@ const Page:React.FC = async  ()=>{
                     }
                 </div> */}
                 {
-                    categories==null && <h1 className="text-center text-white text-xl">Could not fetch categories, please try again later...</h1>
-                }
+                    categories==null ? <h1 className="text-center text-white text-xl">Could not fetch categories, please try again later...</h1>
+                    :
 
-                <div id="category-room-section" className="flex flex-wrap gap-3 justify-center">
+                    <div id="category-room-section" className="flex flex-wrap gap-3 justify-center">
                     {
                         categories.map(cat=>(
                             // <div className="bg-white h-[160px] w-[90%] rounded-md max-w-[300px] flex justify-center items-center object-cover">
                             //     {cat.category}
                             // </div>
-                            <CategoriesCard {...cat}/>
+                            <CategoriesCard {...cat} key={cat._id.toString()}/>
                         ))
                     }
 
                 </div>
+                }
             </div>
         </div>
     )
