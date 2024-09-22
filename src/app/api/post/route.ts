@@ -22,8 +22,8 @@ export async function POST(req:NextRequest){
         
         // geo locate based on user ip
 
-        // let dataResponse = await getLocationData(req.headers.get("x-forwarded-for")!);
-        let dataResponse:IPDATA = await getLocationData("86.13.240.168");
+        let dataResponse:IPDATA = await getLocationData(req.headers.get("x-forwarded-for")!);
+        // let dataResponse:IPDATA = await getLocationData("86.13.240.168");
 
         let client = await clientPromise;
 
